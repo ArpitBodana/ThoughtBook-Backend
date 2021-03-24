@@ -18,9 +18,6 @@ from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from django.conf.urls import url
-from django.views.static import serve
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +25,5 @@ urlpatterns = [
     path('api/v1/',include('thoughtbook.api_urls')),
     path('api/v1/auth/',include('rest_framework.urls')),
     # path('rest-auth/', include('rest_auth.urls')),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':  settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
    
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
